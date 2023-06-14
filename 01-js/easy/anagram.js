@@ -8,7 +8,17 @@
 */
 
 function isAnagram(str1, str2) {
-
+  // assuming only letters and that also lowercase
+  const letterMap = new Array(26).fill(0);
+  if (str1.length !== str2.length) return false;
+  for (var i = 0; i < str1.length; i++){
+    letterMap[str1[i] - 'a']++;
+    letterMap[str2[i] - 'a']--;
+  }
+  for (var i = 0; i < str1.length; i++){
+    if (letterMap[i] !== 0) return false;
+  }
+  return true;
 }
 
 module.exports = isAnagram;

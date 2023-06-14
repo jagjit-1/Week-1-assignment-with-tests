@@ -12,6 +12,32 @@
 */
 
 class Todo {
+  constructor(){
+    this.tasks = [];
+  }
+  add (todo){
+    this.tasks.push(todo);
+    return;
+  }
+  remove (indexOfTodo){
+    this.tasks = this.tasks.filter((val, idx)=>{
+      return idx !== indexOfTodo;
+    });
+    return;
+  }
+  update (index, updatedTodo) {
+    this.tasks[index] = this.updatedTodo;
+    return;
+  }
+  getAll (){
+    return this.tasks;
+  }
+  get (indexOfTodo){
+    return this.tasks[indexOfTodo];
+  }
+  clear () {
+    this.tasks = [];
+  }
 
 }
 
