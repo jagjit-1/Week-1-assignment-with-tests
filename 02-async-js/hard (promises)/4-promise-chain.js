@@ -21,6 +21,6 @@ function waitThreeSecond() {
 
 function calculateTime() {
     const prevTime = new Date();
-    Promise.all(waitOneSecond, waitTwoSecond, waitThreeSecond);
-    console.log(new Date() - prevTime);
+    waitOneSecond.then(()=> waitTwoSecond().then(()=>waitThreeSecond().then(()=>console.log(new Date() - prevTime))))
+    
 }
