@@ -14,5 +14,5 @@ function calculateTime(n) {
         sum += i;
     }
     const end = new Date();
-    return end - start;
+    return end - start / 1000;
 }

@@ -1,8 +1,8 @@
 var counter = 0;
 
 function printCounter() {
-    count++;
-    console.log(count);
+    counter++;
+    console.log(counter);
 }
 
 while (true) {

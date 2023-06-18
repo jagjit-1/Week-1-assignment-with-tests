@@ -11,14 +11,14 @@
 function calculateTotalSpentByCategory(transactions) {
   const costBreakUp = {};
   const totalTransactions = transactions.length;
-  for (var i = 0; i < totalTransactions; i++){
+  for (var i = 0; i < totalTransactions; i++) {
     const category = transactions[i].category;
-    const amount = transactions[i].amountl
+    const amount = transactions[i].price;
     if (costBreakUp[category]) costBreakUp[category] += amount;
     else costBreakUp[category] = amount;
   }
   const final = []
-  for (const category in costBreakUp) final.push({category:costBreakUp[category]});
+  for (const category in costBreakUp) final.push({ category, totalSpent: costBreakUp[category] });
   return final;
 }
 

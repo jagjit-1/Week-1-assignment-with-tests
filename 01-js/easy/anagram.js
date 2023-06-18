@@ -8,15 +8,22 @@
 */
 
 function isAnagram(str1, str2) {
-  // assuming only letters and that also lowercase
-  const letterMap = new Array(26).fill(0);
+  const letterMap = {}
   if (str1.length !== str2.length) return false;
-  for (var i = 0; i < str1.length; i++){
-    letterMap[str1[i] - 'a']++;
-    letterMap[str2[i] - 'a']--;
+  str1 = str1.toLowerCase().replace(/\s/g, '');
+  str2 = str2.toLowerCase().replace(/\s/g, '');
+  for (var i = 0; i < str1.length; i++) {
+
+    if (letterMap[str1[i]]) letterMap[str1[i]]++;
+    else letterMap[str1[i]] = 1;
+
+
+    if (letterMap[str2[i]]) letterMap[str2[i]]--;
+    else letterMap[str2[i]] = -1;
+
   }
-  for (var i = 0; i < str1.length; i++){
-    if (letterMap[i] !== 0) return false;
+  for (const key in letterMap) {
+    if (letterMap[key] !== 0) return false;
   }
   return true;
 }
