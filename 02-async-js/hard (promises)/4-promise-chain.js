@@ -5,22 +5,26 @@
  * Compare it with the results from 3-promise-all.js
  */
 
-const {wait} = require('./promisify-setTimeout.js')
+const { wait } = require('./1-promisify-setTimeout.js')
 
 function waitOneSecond() {
-    wait(1);
+    return wait(1);
 }
 
 function waitTwoSecond() {
-    wait(2);
+    return wait(2);
 }
 
 function waitThreeSecond() {
-    wait(3);
+    return wait(3);
 }
 
 function calculateTime() {
     const prevTime = new Date();
-    waitOneSecond.then(()=> waitTwoSecond().then(()=>waitThreeSecond().then(()=>console.log(new Date() - prevTime))))
-    
+    waitOneSecond().then(() => waitTwoSecond().then(() => waitThreeSecond().then(() => console.log(new Date() - prevTime))))
 }
+calculateTime();
+
+/*
+    Time Logged - 6005 ms
+*/

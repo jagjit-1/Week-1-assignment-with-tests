@@ -4,22 +4,28 @@
  * Print how long it took for all 3 promises to resolve.
  */
 
-const {wait} = require('./promisify-setTimeout.js')
+const { wait } = require('./1-promisify-setTimeout.js')
 
 function waitOneSecond() {
-    wait(1);
+    return wait(1);
 }
 
 function waitTwoSecond() {
-    wait(2);
+    return wait(2);
 }
 
 function waitThreeSecond() {
-    wait(3);
+    return wait(3);
 }
 
 function calculateTime() {
     const prevTime = new Date();
-    Promise.all(waitOneSecond, waitTwoSecond, waitThreeSecond);
-    console.log(new Date() - prevTime);
+    Promise.all([waitOneSecond(), waitTwoSecond(), waitThreeSecond()]).then(() => console.log(new Date() - prevTime))
+
 }
+
+calculateTime()
+
+/*
+    Time Logged - 3001 ms
+*/
